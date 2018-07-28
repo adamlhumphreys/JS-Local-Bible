@@ -1,2 +1,20 @@
-# JS-Local-Bible
+# JS-Local Bible
 A simple JavaScript Bible that doesn’t require an Internet connection with built-in search.
+
+### To open it in Android, navigate to the following address where “storage/sdcard0/” is the location of the “kjv” folder:
+
+> file:///storage/sdcard0/kjv/index.htm
+
+## Navigation/Browser History
+Unless you click on the chapter link, no browser history will be recorded. So if you want to return to the page you were just reading using the browser’s “Back” button, make sure you have already clicked on the chapter link first. Otherwise, only the content on the same page changes.
+
+## Future Development
+This satisfies me needs, but I might do some more neat styling later.
+
+## History
+So, I wanted a decent Bible app for Android that both didn’t require an Internet connection and supported multiple tabs. Couldn’t find one. So I finally put this together and added search, because that’s just convenient when you’re trying to find a particular verse!
+
+Because it’s based on JavaScript it’s platform independent so long as you have a JavaScript enabled browser. Just copy it to your device! HOWEVER, usually Android is stupid when it comes to opening an HTML file in the browser. Never could figure that out, so...
+
+## Copyright
+Copyright (c) 2009-2018 Adam L. Humphreys
