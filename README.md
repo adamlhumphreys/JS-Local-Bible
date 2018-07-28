@@ -14,7 +14,7 @@ This satisfies me needs, but I might do some more neat styling later.
 ## History
 So, I wanted a decent Bible app for Android that both didn’t require an Internet connection and supported multiple tabs. Couldn’t find one. So I finally put this together and added search, because that’s just convenient when you’re trying to find a particular verse!
 
-Because it’s based on JavaScript it’s platform independent so long as you have a JavaScript enabled browser. Just copy it to your device! HOWEVER, usually Android is stupid when it comes to opening an HTML file in the browser. Never could figure that out, so...
+Because it’s based on JavaScript it’s platform independent so long as you have a JavaScript enabled browser. Just copy it to your device! HOWEVER, usually Android is stupid when it comes to opening an HTML file in the browser. Never could figure that out, so you just have to go straight to the address of the index file as described above.
 
 ## Copyright
 Copyright (c) 2009-2018 Adam L. Humphreys
