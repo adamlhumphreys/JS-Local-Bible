@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>NKJV Bible</title>
+
+<link href="jslb/style.css" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="jslb/books.js" language="javascript" type="text/javascript"></script>
+<script src="jslb/changer.js" language="javascript" type="text/javascript"></script>
+<link rel="shortcut icon" href="i/favicon.png">
+</head>
+<body>
+<span id="debug"></span>
+<div align="center">
+	<div id="content">
+		<div id="contentTop"></div>
+		<div id="contentMiddle">
+<div id="navigation">
+	<form action="#" method="GET" onsubmit="return s.value!=''">
+		<input id="searchField" title="Search" name="s" type="text">
+		<input value="Search" type="submit">
+	</form>
+	<select id="bookList" onchange="javascript:changeBook(this.options[this.selectedIndex].value);">
+		<option id="book1" value="1">Genesis</option>
+		<option id="book2" value="2">Exodus</option>
+		<option id="book3" value="3">Leviticus</option>
+		<option id="book4" value="4">Numbers</option>
+		<option id="book5" value="5">Deuteronomy</option>
+		<option id="book6" value="6">Joshua</option>
+		<option id="book7" value="7">Judges</option>
+		<option id="book8" value="8">Ruth</option>
+		<option id="book9" value="9">1 Samuel</option>
+		<option id="book10" value="10">2 Samuel</option>
+		<option id="book11" value="11">1 Kings</option>
+		<option id="book12" value="12">2 Kings</option>
+		<option id="book13" value="13">1 Chronicles</option>
+		<option id="book14" value="14">2 Chronicles</option>
+		<option id="book15" value="15">Ezra</option>
+		<option id="book16" value="16">Nehemiah</option>
+		<option id="book17" value="17">Esther</option>
+		<option id="book18" value="18">Job</option>
+		<option id="book19" value="19">Psalm</option>
+		<option id="book20" value="20">Proverbs</option>
+		<option id="book21" value="21">Ecclesiastes</option>
+		<option id="book22" value="22">Song of Solomon</option>
+		<option id="book23" value="23">Isaiah</option>
+		<option id="book24" value="24">Jeremiah</option>
+		<option id="book25" value="25">Lamentations</option>
+		<option id="book26" value="26">Ezekiel</option>
+		<option id="book27" value="27">Daniel</option>
+		<option id="book28" value="28">Hosea</option>
+		<option id="book29" value="29">Joel</option>
+		<option id="book30" value="30">Amos</option>
+		<option id="book31" value="31">Obadiah</option>
+		<option id="book32" value="32">Jonah</option>
+		<option id="book33" value="33">Micah</option>
+		<option id="book34" value="34">Nahum</option>
+		<option id="book35" value="35">Habakkuk</option>
+		<option id="book36" value="36">Zephaniah</option>
+		<option id="book37" value="37">Haggai</option>
+		<option id="book38" value="38">Zechariah</option>
+		<option id="book39" value="39">Malachi</option>
+		<option id="book40" value="40">Matthew</option>
+		<option id="book41" value="41">Mark</option>
+		<option id="book42" value="42">Luke</option>
+		<option id="book43" value="43">John</option>
+		<option id="book44" value="44">Acts</option>
+		<option id="book45" value="45">Romans</option>
+		<option id="book46" value="46">1 Corinthians</option>
+		<option id="book47" value="47">2 Corinthians</option>
+		<option id="book48" value="48">Galatians</option>
+		<option id="book49" value="49">Ephesians</option>
+		<option id="book50" value="50">Philippians</option>
+		<option id="book51" value="51">Colossians</option>
+		<option id="book52" value="52">1 Thessalonians</option>
+		<option id="book53" value="53">2 Thessalonians</option>
+		<option id="book54" value="54">1 Timothy</option>
+		<option id="book55" value="55">2 Timothy</option>
+		<option id="book56" value="56">Titus</option>
+		<option id="book57" value="57">Philemon</option>
+		<option id="book58" value="58">Hebrews</option>
+		<option id="book59" value="59">James</option>
+		<option id="book60" value="60">1 Peter</option>
+		<option id="book61" value="61">2 Peter</option>
+		<option id="book62" value="62">1 John</option>
+		<option id="book63" value="63">2 John</option>
+		<option id="book64" value="64">3 John</option>
+		<option id="book65" value="65">Jude</option>
+		<option id="book66" value="66">Revelation</option>
+	</select>
+	<select id="chapterList" onchange="javascript:changeChapter(this.options[this.selectedIndex].id);">
+	</select>
+	<br>
+	<span id="firstX" style="display: none"> <strike>&#9668;&#9668; First</strike></span>
+	<span id="first" style="display: none"> <a href="" onclick="javascript:changeChapter('first'); return false;">&#9668;&#9668; First</a></span>
+	<span id="prevX" style="display: none"> <strike>&#9668; Previous</strike></span>
+	<span id="prev" style="display: none"> <a href="" onclick="javascript:changeChapter('prev'); return false;" rev="prev">&#9668; Previous</a></span> | 
+	<span id="nextX" style="display: none"> <strike>Next &#9658;</strike></span>
+	<span id="next" style="display: none"> <a href="" onclick="javascript:changeChapter('next'); return false;" rel="next">Next &#9658;</a></span>
+	<span id="lastX" style="display: none"> <strike>Last &#9658;&#9658;</strike></span>
+	<span id="last" style="display: none"> <a href="" onclick="javascript:changeChapter('last'); return false;">Last &#9658;&#9658;</a></span>
+	<br>
+</div><br>
+<span id="pageTitle">Book 0</span><br>
+<span id="chapter">Chapter text goes here.</span>
+<br>
+		</div>
+		<div id="contentBottom"></div>
+	</div>
+	<div id="footer">JS-Local Bible &copy; 2009-2018 <a href="http://www.adamlhumphreys.com/">Adam L. Humphreys</a></div>
+</div>
+<script language="javascript" type="text/javascript">
+makeList(document.getElementById("chapterList"));
+changeChapter("first");
+showHideButtons();
+getVars();
+</script>
+</body>
+</html>
