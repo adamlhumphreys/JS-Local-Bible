@@ -1,5 +1,5 @@
 # JS-Local Bible
-A simple JavaScript Bible that doesn’t require an Internet connection with built-in search.
+A simple offline JavaScript Bible that doesn’t require an Internet connection and features built-in search.
 
 ## How To Use
 Download to your device and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to the following address where “storage/sdcard0/” is the location of the “kjv” folder:
