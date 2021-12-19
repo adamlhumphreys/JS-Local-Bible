@@ -2,7 +2,7 @@
 A simple offline JavaScript Bible that doesn’t require an Internet connection and features built-in search.
 
 ## How To Use
-Download to your device and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to the following address where “storage/\[SDcard\]/” is the location of the “kjv” folder. Here's what some variants could look like:
+Download to your device and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to the following address where “storage/\[SDcard\]/” is the location of the “kjv” folder. You may likely have to use the internal storage of your device rather than an actual SD card. Here's what some variants could look like:
 
 > file:///storage/sdcard0/nkjv/index.htm
 
