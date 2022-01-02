@@ -45,10 +45,16 @@ h3
 }
 .verse
 {
-	color: #444444;
+	color: #444;
+	mix-blend-mode: difference;
 	font-size: 60%;
 	font-weight: bold;
 	vertical-align: super;
+	background-size: 0.72em 0.72em;
+	padding-bottom: 0.7em;
+	background-position-y: bottom;
+	background-position-x: 40%;
+	background-repeat: no-repeat;
 }
 .HL
 {
@@ -179,12 +185,16 @@ form
 	font-size: 80%;
 }
 
-/* Quick visual location identifiers for verses */
+/* Quick visual location identifiers for verses *
 #chapter span.a, #chapter span.b, #chapter span.c, #chapter span.d, #chapter span.e, #chapter span.f, #chapter span.g
 {
-	border-bottom-width: 5px;
-    border-bottom-style: dotted;
-}
+	/* border-bottom-width: 0.55em; *
+    /* border-bottom-style: dotted; *
+	background-size: 0.8em 0.8em;
+    padding-bottom: 0.7em;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+}/*
 #chapter span.a { border-color: #f00; }
 #chapter span.b { border-color: #f70; }
 #chapter span.c { border-color: #ff0; }
@@ -193,18 +203,14 @@ form
 #chapter span.f { border-color: #07f; }
 #chapter span.g { border-color: #f0f; }
 
-#chapter div.a, #chapter div.b, #chapter div.c, #chapter div.d, #chapter div.e, #chapter div.f, #chapter div.g
-{
-	border-right-width: 3px;
-    border-right-style: solid;
-}
-#chapter div.a { border-color: rgba(255,   0,   0, .5); }
-#chapter div.b { border-color: rgba(255, 127,   0, .5); }
-#chapter div.c { border-color: rgba(255, 255,   0, .5); }
-#chapter div.d { border-color: rgba(  0, 255,   0, .5); }
-#chapter div.e { border-color: rgba(  0, 255, 255, .5); }
-#chapter div.f { border-color: rgba(  0, 127, 255, .5); }
-#chapter div.g { border-color: rgba(255,   0, 255, .5); }
+#chapter span.a { background-image: radial-gradient(#f00 40%, #000, #fff 60%); }
+#chapter span.b { background-image: radial-gradient(#f70 40%, #000, #fff 60%); }
+#chapter span.c { background-image: radial-gradient(#ff0 40%, #000, #fff 60%); }
+#chapter span.d { background-image: radial-gradient(#0f0 40%, #000, #fff 60%); }
+#chapter span.e { background-image: radial-gradient(#0ff 40%, #000, #fff 60%); }
+#chapter span.f { background-image: radial-gradient(#07f 40%, #000, #fff 60%); }
+#chapter span.g { background-image: radial-gradient(#f0f 40%, #000, #fff 60%); } */
+
 
 /*The leftovers:*/
 
@@ -240,10 +246,5 @@ form
 	.tabs a.blank
 	{
 		padding-left: 0.14em;
-	}
-	#chapter span.a, #chapter span.b, #chapter span.c, #chapter span.d, #chapter span.e, #chapter span.f, #chapter span.g
-	{
-		border-bottom-width: 8px;
-		border-bottom-style: dotted;
 	}
 }

@@ -227,15 +227,17 @@ function changeChapter(where)
 	if (currentVerse == -1)
 		for (var i = 0; i < books[currentBook][currentChapter].length; i++)
 		{
-			var seg = String.fromCharCode(97 + Math.floor( i / (books[currentBook][currentChapter].length/7) ) );
+			var bg = Math.round( ( (i+0.5) / books[currentBook][currentChapter].length ) * 360);
+			var bg = 'background-image:conic-gradient(#000 ' + bg + 'deg,#fff ' + (bg+1) + 'deg)';
 
 			// chapterBlock.innerHTML += '<span class="verse">' + (i+1) + ' </span>' + books[currentBook][currentChapter][i] + '<br>'; //"\r\n"; // + "<br>\n\r";
-			chapterBlock.innerHTML += '<div class="' + seg + '"><span class="verse ' + seg + '">' + (i+1) + ' </span>' + books[currentBook][currentChapter][i] + '</div>'; //"\r\n"; // + "<br>\n\r";
+			chapterBlock.innerHTML += '<span class="verse" style="' + bg + '">' + (i+1) + ' </span>' + books[currentBook][currentChapter][i] + '<br>'; //"\r\n"; // + "<br>\n\r";
 		}
 	else
 		for (var i = 0; i < books[currentBook][currentChapter].length; i++)
 		{
-			var seg = String.fromCharCode(97 + Math.floor( i / (books[currentBook][currentChapter].length/7) ) );
+			var bg = Math.round( ( (i+0.5) / books[currentBook][currentChapter].length ) * 360);
+			var bg = 'background-image:conic-gradient(#000 ' + bg + 'deg,#fff ' + (bg+1) + 'deg)';
 
 			var out = '';
 			if (i == currentVerse)
@@ -243,7 +245,7 @@ function changeChapter(where)
 			out += books[currentBook][currentChapter][i];
 			if (i == currentVerse)
 				out += '</span>';
-			chapterBlock.innerHTML += '<div class="' + seg + '"><span class="verse ' + seg + '">' + (i+1) + ' </span>' + out + '</div>';
+			chapterBlock.innerHTML += '<span class="verse" style="' + bg + '">' + (i+1) + ' </span>' + out + '<br>';
 		}
 	var option = document.getElementById(currentChapter+1);
 		option.selected = true;
