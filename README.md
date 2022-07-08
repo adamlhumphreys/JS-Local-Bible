@@ -2,13 +2,15 @@
 A simple offline JavaScript Bible that doesn’t require an Internet connection and features built-in search.
 
 ## How To Use
-Download to your device and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to the following address where “storage/\[SDcard\]/” is the location of the “kjv” folder. You may likely have to use the internal storage of your device rather than an actual SD card. Here's what some variants could look like:
+Download to your device and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to one of the following address forms where the “bible” folder can be found:
 
 > file:///storage/sdcard0/bible/index.htm
 
 > file:///storage/DB74-1EFD/bible/index.htm
 
 > file:///storage/emulated/0/bible/index.htm
+
+For Android Chrome, make sure under "App info", under "Advanced", that "Install unknown apps" is set to "Allowed". (This doesn't seem necessary on FireFox for Android.)
 
 ## Navigation/Browser History
 Unless you click on the chapter link, no browser history will be recorded. So if you want to return to the page you were just reading using the browser’s “Back” button, make sure you have already clicked on the chapter link first. Otherwise, only the content on the same page changes.
@@ -22,4 +24,4 @@ So, I wanted a decent Bible app for Android that both didn’t require an Intern
 Because it’s based on JavaScript it’s platform independent so long as you have a JavaScript enabled browser. Just copy it to your device! HOWEVER, usually Android is stupid when it comes to opening an HTML file in the browser. Never could figure that out, so you just have to go straight to the address of the index file as described above.
 
 ## Copyright
-Copyright (c) 2009-2021 Adam L. Humphreys
+Copyright (c) 2009-2022 Adam L. Humphreys
