@@ -1,30 +1,36 @@
 //JS-Local Bible © 2009-2022 Adam L. Humphreys (ALH)
 
-document.addEventListener("DOMContentLoaded", function()
+document.addEventListener('DOMContentLoaded', function()
 {
-	loadVersion();
+	// Get query string variables.
+	_GET = [];
+	window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(a,name,value){_GET[name]=value.replace(/#.*$/, '');});
+
+	loadVersion(_GET['ver']);
 });
 
 function loadVersion(ver = 'kjv', callback = setup)
 {
+	if (ver === 'undefined')
+		ver = 'kjv';
 	if (typeof books !== 'undefined')
 		delete books;
 
-	var script = document.getElementById("translation");
+	var script = document.getElementById('version');
 	if (script !== null)
 		script.remove();
 
-	var script = document.createElement("script")
-	script.type = "text/javascript";
-	script.id = "translation";
+	var script = document.createElement('script')
+	script.type = 'text/javascript';
+	script.id = 'version';
 	if(script.readyState) // Only required for IE <9
 	{
 		script.onreadystatechange = function()
 		{
-			if ( script.readyState === "loaded" || script.readyState === "complete" )
+			if ( script.readyState === 'loaded' || script.readyState === 'complete' )
 			{
 				script.onreadystatechange = null;
-				callback();
+				callback(ver);
 			}
 		};
 	}
@@ -32,16 +38,17 @@ function loadVersion(ver = 'kjv', callback = setup)
 	{
 		script.onload = function()
 		{
-			callback();
+			callback(ver);
 		};
 	}
 
 	script.src = ver + '.js';
-	document.getElementsByTagName("head")[0].appendChild( script );
+	document.getElementsByTagName('head')[0].appendChild( script );
 }
 
 function setup(ver)
 {
+	version = ver;
 	currentBook = 0;
 	endChapter = books[0].length-1; //Let's first assume the end position is the last element in the array.
 	currentChapter = 0;
@@ -49,33 +56,27 @@ function setup(ver)
 	searchLimit = 1000;
 
 	makeList();
-	changeChapter("first");
-	showHideButtons();
-	getVars();
-	makeChapterTabs();
-}
 
-function getVars()
-{
-	var vars = window.location.search.substr(1).split(':');
-	//document.getElementById('debug').innerHTML = vars[0] + ':' + vars[1] + ':' + vars[2];
-
-	if (vars[0])
+	if (_GET['s'] !== undefined)
+		find(_GET['s']);
+	else if (_GET['loc'] !== undefined)
 	{
-		if (vars[0].indexOf('s') == 0)
-			find(vars[0].substr(2));
-		else
-		{
-			changeBook(vars[0]);
-			if (vars[2]) //Must come before the chapter contents is written.
-				currentVerse = vars[2]-1;
+		var vars = _GET['loc'].split(':');
 
-			if (vars[1])
-				changeChapter(vars[1]);
-			else
-				changeChapter(1);
-		}
+		changeBook(vars[0]);
+		if (vars[2]) //Must come before the chapter contents is written.
+			currentVerse = vars[2]-1;
+
+		if (vars[1])
+			changeChapter(vars[1]);
+		else
+			changeChapter(1);
 	}
+	else
+		changeChapter('first');
+
+	showHideButtons();
+	makeChapterTabs();
 }
 
 function leaders(num, zeros = 3)
@@ -104,15 +105,6 @@ function toggleClassByClass(commonStyleVal, toggleStyleVal, showHide)
 
 function showHideButtons(show)
 {
-	// var first = document.getElementById('first');
-	// var prev = document.getElementById('prev');
-	// var next = document.getElementById('next');
-	// var last = document.getElementById('last');
-	// var firstX = document.getElementById('firstX');
-	// var prevX = document.getElementById('prevX');
-	// var nextX = document.getElementById('nextX');
-	// var lastX = document.getElementById('lastX');
-
 	if (show === undefined)
 	{
 		if (endChapter == 0)
@@ -269,8 +261,8 @@ function changeChapter(where)
 		showHideButtons();
 
 	var pageTitle = document.getElementById('book' + (currentBook+1)).innerHTML + ' ' + (currentChapter+1);
-	document.title = pageTitle;
-	document.getElementById('pageTitle').innerHTML = '<a href="?' + (currentBook+1) + ':' + (currentChapter+1) + '">' + pageTitle + '</a>';
+	document.title = pageTitle + ' (' + version.toUpperCase() + ')';
+	document.getElementById('pageTitle').innerHTML = '<a href="?ver=' + version + '&loc=' + (currentBook+1) + ':' + (currentChapter+1) + '">' + pageTitle + '</a>';
 
 	chapterBlock.innerHTML = '';
 	if (currentVerse == -1)
@@ -309,7 +301,7 @@ function find(string)
 	//https://www.w3schools.com/Jsref/jsref_obj_regexp.asp
 
 	showHideButtons(0);
-	document.title = 'NKJV Search Results';
+	document.title = version.toUpperCase() + ' Search Results';
 	document.getElementById('searchField').value = string.replace(/\+/g, ' ');
 
 	var chapterBlock = document.getElementById('chapter');
@@ -339,7 +331,7 @@ function find(string)
 				{
 					results++;
 					var book_chap = document.getElementById('book' + (book+1)).innerHTML + ' ' + (chapter+1) + ':' + (verse+1);
-					chapterBlock.innerHTML += '<a href="?' + (book+1) + ':' + (chapter+1) + ':' + (verse+1) + '">' + book_chap + '</a> ';
+					chapterBlock.innerHTML += '<a href="?ver=' + version + '&loc=' + (book+1) + ':' + (chapter+1) + ':' + (verse+1) + '">' + book_chap + '</a> ';
 					var words = books[book][chapter][verse].split(' ');
 					var out = '';
 					for (var i = 0; i < words.length; i++)
