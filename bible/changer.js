@@ -79,16 +79,6 @@ function setup(ver)
 	makeChapterTabs();
 }
 
-function leaders(num, zeros = 3)
-{
-	zeros -= num.toString().length;
-	var leaders = '';
-
-	while (zeros-- > 0)
-		leaders += '0';
-	return leaders + num;
-}
-
 function toggleClassByClass(commonStyleVal, toggleStyleVal, showHide)
 {
 	toggleStyleValRx = new RegExp('( ' + toggleStyleVal + ')', 'gmi');
@@ -256,9 +246,7 @@ function changeChapter(where)
 		currentChapter = where-1;
 	}
 
-	//chapterNum = leaders(currentChapter+1);
-	//if (currentChapter <= 1 || currentChapter >= endChapter-1)
-		showHideButtons();
+	showHideButtons();
 
 	var pageTitle = document.getElementById('book' + (currentBook+1)).innerHTML + ' ' + (currentChapter+1);
 	document.title = pageTitle + ' (' + version.toUpperCase() + ')';
@@ -373,7 +361,7 @@ function makeList(elem = document.getElementById("chapterList"))
 		var option = document.createElement('option');
 		option.id = (i+1);
 		//option.value = (i+1);
-		option.innerHTML = 'Chapter ' + (i+1); //leaders(i+1);
+		option.innerHTML = 'Chapter ' + (i+1);
 		if (currentChapter == i)
 			option.selected = true;
 		elem.appendChild(option);
