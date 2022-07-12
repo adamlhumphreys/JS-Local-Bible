@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>NKJV Bible</title>
+<title>JS-Local Bible</title>
 <!--meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" /-->
 <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 <script src="changer.js" type="text/javascript"></script>
@@ -108,6 +108,15 @@
 			</form>
 			<!--a href="" onclick="location.assign(window.location.href.substr(0, window.location.href.indexOf('.htm')+4) + '?s=' + document.getElementById('searchField').value.replace(/ /g, '+')); return false;">Search</a><br /-->
 			<!--a href="" onclick="javascript:find(document.getElementById('searchField').value.replace(' ', '+')); return false;">Search</a><br /-->
+			<select id="bookList" onchange="javascript:loadVersion(this.options[this.selectedIndex].value);">
+				<option id='ver-kjv' value="kjv">KJV</option>
+				<option id='ver-nkjv' value="nkjv">NKJV</option>
+				<option id='ver-hcsb' value="hcsb">HCSB</option>
+				<option id='ver-litv' value="litv">LITV</option>
+				<option id='ver-nrsv' value="nrsv">NRSV</option>
+				<option id='ver-web' value="web">WEB</option>
+				<option id='ver-ylt' value="ylt">YLT</option>
+			</select>
 			<select id="bookList" onchange="javascript:changeBook(this.options[this.selectedIndex].value);">
 				<option id="book1" value="1">Genesis</option>
 				<option id="book2" value="2">Exodus</option>
@@ -203,7 +212,7 @@
 		<span class="last hidden"> <a href="" onclick="javascript:changeChapter('last'); window.scrollTo(0,0); return false;">Last &#9658;&#9658;</a></span>
 <br>
 		<div id="footer">New King James Version &copy; 1979, 1980, 1982 <a href="https://www.thomasnelson.com/">Thomas Nelson</a><br>
-		JS-Local Bible &copy; 2009-2021 <a href="http://www.adamlhumphreys.com/">Adam L. Humphreys</a></div>
+		JS-Local Bible &copy; 2009-2022 <a href="http://www.adamlhumphreys.com/">Adam L. Humphreys</a></div>
 	</div>
 </div>
 </body>

@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Bible Format Converter Utility</title>
+</head>
+<body style="font-size: 3.5vw">
+<script>
+const reader = new FileReader();
+
+function readXML(input)
+{
+	const xml = input.files[0];
+	var resultOutput = document.getElementById('xmlOut');
+	resultOutput.innerHTML = '';
+	var filename = xml.name.substring(0, xml.name.lastIndexOf('.'));
+	if (xml.name.substring(xml.name.lastIndexOf('.') + 1) == 'xml')
+	{
+		reader.readAsText(xml);
+		reader.onload = function (e)
+		{
+			var parser = new DOMParser();
+			var books = parser.parseFromString(e.target.result,"text/xml");
+			//console.log(books);
+
+			var jsonOut = 'books = [\n';
+
+			var books = books.getElementsByTagName('BIBLEBOOK');
+			for (var i = 0; i < books.length; i++)
+			{
+				//console.log(books[i]);
+				jsonOut += '\t[\n';
+
+				var chapters = books[i].getElementsByTagName('CHAPTER');
+				for (var j = 0; j < chapters.length; j++)
+				{
+					//console.log(chapters[j]);
+					jsonOut += '\t\t[\n';
+
+					var verses = chapters[j].getElementsByTagName('VERS');
+					for (var k = 0; k < verses.length; k++)
+					{
+						//console.log(verses[k].innerHTML.trim());
+						jsonOut += '\t\t\t' + JSON.stringify(verses[k].innerHTML.trim());
+						if (k + 1 != verses.length)
+							jsonOut += ',';
+						jsonOut += '\n';
+					}
+					jsonOut += '\t\t]';
+					if (j + 1 != chapters.length)
+						jsonOut += ',';
+					jsonOut += '\n';
+				}
+				jsonOut += '\t]';
+				if (i + 1 != books.length)
+					jsonOut += ',';
+				jsonOut += '\n';
+			}
+			jsonOut += ']\n';
+			//console.log(jsonOut);
+			parser.delete;
+
+			var jsonOut = "data:application/json;charset=utf-8," + encodeURI(jsonOut);
+			var link = document.createElement('a');
+			link.setAttribute('href', jsonOut);
+			link.setAttribute("download", filename + '.js');
+			link.innerHTML = filename;
+			resultOutput.appendChild(link); // Required for FF
+
+			link.click();
+		}
+	}
+	else
+		resultOutput.innerHTML = 'ERROR, wrong file extension. XML file expected.';
+}
+</script>
+
+<h4>Converter for Bible translations located at: <a href="https://www.ph4.org/b4_mobi.php?q=zefania">https://www.ph4.org/b4_mobi.php?q=zefania</a></h4>
+<b>Input:</b> <input style="font-size: 3.5vw" type="file" onchange="readXML(this)" accept=".xml"><br>
+<b>Output:</b> <span id="xmlOut"></span><br>
+
+</body>
+</html>

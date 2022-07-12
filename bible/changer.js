@@ -13,8 +13,8 @@ function loadVersion(ver = 'kjv', callback = setup)
 {
 	if (ver === 'undefined')
 		ver = 'kjv';
-	if (typeof books !== 'undefined')
-		delete books;
+
+	document.getElementById('ver-' + ver).selected = true;
 
 	var script = document.getElementById('version');
 	if (script !== null)
@@ -49,31 +49,43 @@ function loadVersion(ver = 'kjv', callback = setup)
 function setup(ver)
 {
 	version = ver;
-	currentBook = 0;
-	endChapter = books[0].length-1; //Let's first assume the end position is the last element in the array.
-	currentChapter = 0;
-	currentVerse = -1;
-	searchLimit = 1000;
+	var newPageLoad = true;
+	if (typeof currentBook !== 'undefined')
+		newPageLoad = false;
 
-	makeList();
-
-	if (_GET['s'] !== undefined)
-		find(_GET['s']);
-	else if (_GET['loc'] !== undefined)
+	if (newPageLoad)
 	{
-		var vars = _GET['loc'].split(':');
+		currentBook = 0;
+		endChapter = books[0].length-1; //Let's first assume the end position is the last element in the array.
+		currentChapter = 0;
+		currentVerse = -1;
+		searchLimit = 1000;
+	}
 
-		changeBook(vars[0]);
-		if (vars[2]) //Must come before the chapter contents is written.
-			currentVerse = vars[2]-1;
+	makeChapterList();
 
-		if (vars[1])
-			changeChapter(vars[1]);
+	if (newPageLoad)
+	{
+		if (_GET['s'] !== undefined)
+			find(_GET['s']);
+		else if (_GET['loc'] !== undefined)
+		{
+			var vars = _GET['loc'].split(':');
+
+			changeBook(vars[0]);
+			if (vars[2]) //Must come before the chapter contents is written.
+				currentVerse = vars[2]-1;
+
+			if (vars[1])
+				changeChapter(vars[1]);
+			else
+				changeChapter(1);
+		}
 		else
-			changeChapter(1);
+			changeChapter('first');
 	}
 	else
-		changeChapter('first');
+		changeChapter(currentChapter + 1);
 
 	showHideButtons();
 	makeChapterTabs();
@@ -199,7 +211,7 @@ function changeBook(bookNum)
 
 	document.getElementById('chapterList').innerHTML = '';
 	makeChapterTabs();
-	makeList();
+	makeChapterList();
 	changeChapter('first');
 	showHideButtons();
 	document.body.scrollTop = 0; // For Safari
@@ -353,7 +365,7 @@ function find(string)
 */
 }
 
-function makeList(elem = document.getElementById("chapterList"))
+function makeChapterList(elem = document.getElementById("chapterList"))
 {
 	elem.innerHTML = '';
 	for (var i = 0; i <= endChapter; i++)
