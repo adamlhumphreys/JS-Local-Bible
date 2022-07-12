@@ -12,6 +12,9 @@ Download to your device and open the “index.htm” file in your device’s Int
 
 For Android Chrome, make sure under "App info", under "Advanced", that "Install unknown apps" is set to "Allowed". (This doesn't seem necessary on FireFox for Android.)
 
+## Translations
+I finally added translation support as of 2022-07-12. For a list of possible translations, go to https://www.ph4.org/b4_mobi.php?q=zefania and use the provided "Bible Format Converter Utility" to change them from .xml into the same type of .js JS-Local Bible already uses. Name them with the same lower-case naming convention. If it's in the dropdown, it should work. If it's not, add it and try it!
+
 ## Navigation/Browser History
 Unless you click on the chapter link, no browser history will be recorded. So if you want to return to the page you were just reading using the browser’s “Back” button, make sure you have already clicked on the chapter link first. Otherwise, only the content on the same page changes.
 
