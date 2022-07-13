@@ -19,7 +19,7 @@ I finally added translation support as of 2022-07-12. For a list of possible tra
 Unless you click on the chapter link, no browser history will be recorded. So if you want to return to the page you were just reading using the browser’s “Back” button, make sure you have already clicked on the chapter link first. Otherwise, only the content on the same page changes.
 
 ## Future Development
-This satisfies me needs, but I might do some more later.
+This satisfies my needs, but I might do some more later, (like maybe add Strong's reference numbers and links or something).
 
 ## History
 So, I wanted a decent Bible app for Android that both didn’t require an Internet connection and supported multiple tabs. Couldn’t find one. So I finally put this together and added search, because that’s just convenient when you’re trying to find a particular verse!
