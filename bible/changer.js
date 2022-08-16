@@ -16,11 +16,11 @@ function loadVersion(ver = 'kjv', callback = setup)
 
 	document.getElementById('ver-' + ver).selected = true;
 
-	var script = document.getElementById('version');
+	let script = document.getElementById('version');
 	if (script !== null)
 		script.remove();
 
-	var script = document.createElement('script')
+	script = document.createElement('script')
 	script.type = 'text/javascript';
 	script.id = 'version';
 	if(script.readyState) // Only required for IE <9
@@ -49,7 +49,7 @@ function loadVersion(ver = 'kjv', callback = setup)
 function setup(ver)
 {
 	version = ver;
-	var newPageLoad = true;
+	let newPageLoad = true;
 	if (typeof currentBook !== 'undefined')
 		newPageLoad = false;
 
@@ -60,6 +60,7 @@ function setup(ver)
 		currentChapter = 0;
 		currentVerse = -1;
 		searchLimit = 1000;
+		document.getElementsByName('ver')[0].value = version; // Set search version
 	}
 
 	makeChapterList();
@@ -96,7 +97,7 @@ function toggleClassByClass(commonStyleVal, toggleStyleVal, showHide)
 	toggleStyleValRx = new RegExp('( ' + toggleStyleVal + ')', 'gmi');
 	for (let elem of document.getElementsByClassName(commonStyleVal))
 	{
-		var classAtr = elem.getAttribute('class').replace(toggleStyleValRx, ''); // If it's already there, remove it! We don't want it there more than once.
+		let classAtr = elem.getAttribute('class').replace(toggleStyleValRx, ''); // If it's already there, remove it! We don't want it there more than once.
 
 		if (showHide)
 			elem.setAttribute('class', classAtr + ' ' + toggleStyleVal);
@@ -206,7 +207,7 @@ function changeBook(bookNum)
 	currentChapter = 0;
 	//chapterNum = 0;
 
-	var option = document.getElementById('book' + bookNum);
+	let option = document.getElementById('book' + bookNum);
 	option.selected=true;
 
 	document.getElementById('chapterList').innerHTML = '';
@@ -220,7 +221,7 @@ function changeBook(bookNum)
 
 function changeChapter(where)
 {
-	var chapterBlock = document.getElementById('chapter');
+	let chapterBlock = document.getElementById('chapter');
 	if (where == 'first')
 	{
 		currentChapter = 0;
@@ -260,7 +261,7 @@ function changeChapter(where)
 
 	showHideButtons();
 
-	var pageTitle = document.getElementById('book' + (currentBook+1)).innerHTML + ' ' + (currentChapter+1);
+	let pageTitle = document.getElementById('book' + (currentBook+1)).innerHTML + ' ' + (currentChapter+1);
 	document.title = pageTitle + ' (' + version.toUpperCase() + ')';
 	document.getElementById('pageTitle').innerHTML = '<a href="?ver=' + version + '&loc=' + (currentBook+1) + ':' + (currentChapter+1) + '">' + pageTitle + '</a>';
 
@@ -288,7 +289,7 @@ function changeChapter(where)
 				out += '</span>';
 			chapterBlock.innerHTML += '<span class="verse" style="' + bg + '">' + (i+1) + ' </span>' + out + '<br>';
 		}
-	var option = document.getElementById(currentChapter+1);
+	let option = document.getElementById(currentChapter+1);
 		option.selected = true;
 
 	currentVerse = -1;
@@ -304,10 +305,10 @@ function find(string)
 	document.title = version.toUpperCase() + ' Search Results';
 	document.getElementById('searchField').value = string.replace(/\+/g, ' ');
 
-	var chapterBlock = document.getElementById('chapter');
-	var terms = string.split('+');
-	var termCount = terms.length;
-	var results = 0;
+	let chapterBlock = document.getElementById('chapter');
+	let terms = string.split('+');
+	let termCount = terms.length;
+	let results = 0;
 
 	string = new RegExp('(' + string.replace(/\+/g,'|') + ')', 'gmi'); //global, multiline, case-insensitive search for all terms.
 	for (var i = 0; i < termCount; i++)
@@ -368,9 +369,9 @@ function find(string)
 function makeChapterList(elem = document.getElementById("chapterList"))
 {
 	elem.innerHTML = '';
-	for (var i = 0; i <= endChapter; i++)
+	for (let i = 0; i <= endChapter; i++)
 	{
-		var option = document.createElement('option');
+		let option = document.createElement('option');
 		option.id = (i+1);
 		//option.value = (i+1);
 		option.innerHTML = 'Chapter ' + (i+1);
@@ -384,7 +385,7 @@ function makeChapterTabs()
 {
 	chapters = document.getElementById('chapters')
 	chapters.innerHTML = '';
-	for (var i = 0; i <= endChapter; i++)
+	for (let i = 0; i <= endChapter; i++)
 	{
 		if (i%10 == 0)
 			chapters.innerHTML += '<a class="blank">'+ (i<99 ? '&nbsp;' : '') + i/10 +'</a>\r\n';
