@@ -11,9 +11,7 @@ Download to your device and open the “index.htm” file in your device’s Int
 > file:///storage/DB74-1EFD/bible/index.htm ['DB74-1EFD' will be unique to your device's SD card]
 
 For Android Chrome, make sure under "App info", under "Advanced", that "Install unknown apps" is set to "Allowed".
-ADDITIONALLY, for Android Chrome, apparently they introduced a bug where, after entering, pasting, or even editing a local URL, Android Chrome will now search the web for that URL rather than attempt to navigate to that designated URL as it should. A couple workarounds for this bug is to
-1) Try opening one of the links above [here](http://www.adamlhumphreys.com/~stuff/JS-LocalBibleLinks.htm) (since GitHub also doesn't properly link to local URLs) on your device while you're connected to the web, or
-2) Create a bookmark/favorite and edit the URL on the bookmark/favorite, pasting the local URL, then opening the bookmark/favorite.
+ADDITIONALLY, for Android Chrome, apparently they introduced a bug where, after entering, pasting, or even editing a local URL, Android Chrome will now search the web for that URL rather than attempt to navigate to that designated URL as it should. A workaround for this bug is to create a bookmark/favorite and edit the URL on the bookmark/favorite, pasting the local URL, then opening the bookmark/favorite.
 It used to work fine for FireFox on Android, but now I can't seem to get it to work.
 
 ## Translations
