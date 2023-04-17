@@ -12,6 +12,7 @@ Download to your device and open the “index.htm” file in your device’s Int
 
 For Android Chrome, make sure under "App info", under "Advanced", that "Install unknown apps" is set to "Allowed".
 ADDITIONALLY, for Android Chrome, apparently they introduced a bug where, after entering, pasting, or even editing a local URL, Android Chrome will now search the web for that URL rather than attempt to navigate to that designated URL as it should. A workaround for this bug is to create a bookmark/favorite and edit the URL on the bookmark/favorite, pasting the local URL, then opening the bookmark/favorite.
+
 It used to work fine for FireFox on Android, but now I can't seem to get it to work.
 
 ## Translations
