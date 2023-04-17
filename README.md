@@ -4,11 +4,11 @@ A simple offline JavaScript Bible that doesn’t require an Internet connection 
 ## How To Use
 Download to your device and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to one of the following address forms where the “bible” folder can be found:
 
-> [file:///storage/emulated/0/bible/index.htm]
+> [file:///storage/emulated/0/bible/index.htm](file:///storage/emulated/0/bible/index.htm)
 
-> [file:///storage/sdcard0/bible/index.htm]
+> [file:///storage/sdcard0/bible/index.htm](file:///storage/sdcard0/bible/index.htm)
 
-> [file:///storage/DB74-1EFD/bible/index.htm] \['DB74-1EFD' will be unique to your device's SD card\]
+> [file:///storage/DB74-1EFD/bible/index.htm](file:///storage/DB74-1EFD/bible/index.htm) ['DB74-1EFD' will be unique to your device's SD card]
 
 For Android Chrome, make sure under "App info", under "Advanced", that "Install unknown apps" is set to "Allowed".
 ADDITIONALLY, for Android Chrome, apparently they introduced a bug where, after entering, pasting, or even editing a local URL, Android Chrome will now search the web for that URL rather than attempt to navigate to that designated URL as it should. A couple workarounds for this bug is to 1) try opening one of the links above on your device while you're connected to the web, or 2) create a bookmark/favorite and edit the URL on the bookmark/favorite, pasting the local URL, then opening the bookmark/favorite.
