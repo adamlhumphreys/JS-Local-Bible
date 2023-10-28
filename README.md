@@ -2,7 +2,14 @@
 A simple offline JavaScript Bible that doesn’t require an Internet connection and features built-in search.
 
 ## How To Use
-Download to your device and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to one of the following address forms where the “bible” folder can be found:
+Download to your device and extract. Install Simple HTTP Server here: https://play.google.com/store/apps/details?id=com.phlox.simpleserver&hl=en_US&gl=US
+
+Open Simple HTTP Server, set the root folder to the 'bible' directory, and start the server.
+
+In your browser of choice, navigate to http://127.0.0.1/index.htm
+
+## How To Use (on older devices without Simple HTTP Server)
+Download to your device, extract, and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to one of the following address forms where the “bible” folder can be found:
 
 > file:///storage/emulated/0/bible/index.htm
 
