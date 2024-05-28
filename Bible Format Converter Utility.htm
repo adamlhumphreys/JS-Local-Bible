@@ -6,10 +6,10 @@
 <script>
 const reader = new FileReader();
 
-function readXML(input)
+function readXML(input, tags, output, trimQuotes = false)
 {
 	const xml = input.files[0];
-	var resultOutput = document.getElementById('xmlOut');
+	var resultOutput = document.getElementById(output);
 	resultOutput.innerHTML = '';
 	var filename = xml.name.substring(0, xml.name.lastIndexOf('.'));
 	if (xml.name.substring(xml.name.lastIndexOf('.') + 1) == 'xml')
@@ -23,23 +23,26 @@ function readXML(input)
 
 			var jsonOut = 'books = [\n';
 
-			var books = books.getElementsByTagName('BIBLEBOOK');
+			var books = books.getElementsByTagName(tags[0]);
 			for (var i = 0; i < books.length; i++)
 			{
 				//console.log(books[i]);
 				jsonOut += '\t[\n';
 
-				var chapters = books[i].getElementsByTagName('CHAPTER');
+				var chapters = books[i].getElementsByTagName(tags[1]);
 				for (var j = 0; j < chapters.length; j++)
 				{
 					//console.log(chapters[j]);
 					jsonOut += '\t\t[\n';
 
-					var verses = chapters[j].getElementsByTagName('VERS');
+					var verses = chapters[j].getElementsByTagName(tags[2]);
 					for (var k = 0; k < verses.length; k++)
 					{
 						//console.log(verses[k].innerHTML.trim());
-						jsonOut += '\t\t\t' + JSON.stringify(verses[k].innerHTML.trim());
+						let verse = verses[k].innerHTML.trim();
+						if (trimQuotes)
+							verse = verse.substring(1, verse.length-1);
+						jsonOut += '\t\t\t' + JSON.stringify(verse);
 						if (k + 1 != verses.length)
 							jsonOut += ',';
 						jsonOut += '\n';
@@ -73,9 +76,13 @@ function readXML(input)
 }
 </script>
 
-<h4>Converter for Bible translations located at: <a href="https://www.ph4.org/b4_mobi.php?q=zefania">https://www.ph4.org/b4_mobi.php?q=zefania</a></h4>
-<b>Input:</b> <input style="font-size: 3.5vw" type="file" onchange="readXML(this)" accept=".xml"><br>
-<b>Output:</b> <span id="xmlOut"></span><br>
+<h4>Converter for XML Bible translations located at: <a href="https://www.ph4.org/b4_mobi.php?q=zefania">https://www.ph4.org/b4_mobi.php?q=zefania</a></h4>
+<b>Input:</b> <input style="font-size: 3.5vw" type="file" onchange="readXML(this, ['BIBLEBOOK', 'CHAPTER', 'VERS'], 'zefaniaOut')" accept=".xml"><br>
+<b>Output:</b> <span id="zefaniaOut"></span><br>
+<br>
+<h4>Converter for international XML Bible translations located at: <a href="https://github.com/godlytalias/Bible-Database">https://github.com/godlytalias/Bible-Database</a></h4>
+<b>Input:</b> <input style="font-size: 3.5vw" type="file" onchange="readXML(this, ['Book', 'Chapter', 'Verse'], 'godlytaliasOut', true)" accept=".xml"><br>
+<b>Output:</b> <span id="godlytaliasOut"></span><br>
 
 </body>
 </html>
