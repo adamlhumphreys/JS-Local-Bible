@@ -24,7 +24,7 @@ ADDITIONALLY, for Android Chrome, apparently they introduced a bug where, after 
 It used to work fine for FireFox on Android, but now I can't seem to get it to work.
 
 ## Translations
-I finally added translation support as of 2022-07-12. For a list of possible translations, go to https://www.ph4.org/b4_mobi.php?q=zefania or https://github.com/godlytalias/Bible-Database and use the provided "Bible Format Converter Utility" to change them from .xml into the same type of .js JS-Local Bible already uses. Name them with the same lower-case naming convention. If it's in the dropdown, it should work. If it's not, add it by opening index.htm in a text editor, look for 'bookList' add an <option> line for it, and try it!
+I finally added translation support as of 2022-07-12. For a list of possible translations, go to https://www.ph4.org/b4_mobi.php?q=zefania or https://github.com/godlytalias/Bible-Database and use the provided "Bible Format Converter Utility" to change them from .xml into the same type of .js JS-Local Bible already uses. Name them with the same lower-case naming convention. If it's in the dropdown, it should work. If it's not, add it by opening index.htm in a text editor, look for 'bookList' add an \<option\> line for it, and try it!
 
 ## Navigation/Browser History
 Unless you click on the chapter link, no browser history will be recorded. So if you want to return to the page you were just reading using the browser’s “Back” button, make sure you have already clicked on the chapter link first. Otherwise, only the content on the same page changes.
