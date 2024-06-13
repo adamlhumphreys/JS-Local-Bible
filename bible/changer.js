@@ -68,7 +68,7 @@ function setup(ver)
 	if (newPageLoad)
 	{
 		if (_GET['s'] !== undefined)
-			find(_GET['s']);
+			find(decodeURI(_GET['s']).replace(/^[\+\s]+|[\+\s]+$/gm,'')); // Support Unicode and trim whitespace.
 		else if (_GET['loc'] !== undefined)
 		{
 			var vars = _GET['loc'].split(':');
