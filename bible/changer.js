@@ -1,4 +1,4 @@
-//JS-Local Bible © 2009-2022 Adam L. Humphreys (ALH)
+//JS-Local Bible © 2009-2024 Adam L. Humphreys (ALH)
 
 document.addEventListener('DOMContentLoaded', function()
 {
@@ -60,9 +60,9 @@ function setup(ver)
 		currentChapter = 0;
 		currentVerse = -1;
 		searchLimit = 1000;
-		document.getElementsByName('ver')[0].value = version; // Set search version
 	}
 
+	document.getElementsByName('ver')[0].value = version; // Set search version
 	makeChapterList();
 
 	if (newPageLoad)
