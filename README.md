@@ -8,7 +8,7 @@ Open Simple HTTP Server, set the root folder to the 'bible' directory, and start
 
 In your browser of choice, navigate to http://127.0.0.1:8080/index.htm
 
-## How To Use (on older devices without Simple HTTP Server)
+## How To Use on older devices (without Simple HTTP Server)
 Download to your device, extract, and open the “index.htm” file in your device’s Internet browser. To open it in Android, navigate to one of the following address forms where the “bible” folder can be found:
 
 > file:///storage/emulated/0/bible/index.htm
