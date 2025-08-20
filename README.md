@@ -3,6 +3,7 @@ A simple offline JavaScript Bible that doesn’t require an Internet connection 
 
 ## How To Use
 Download to your device and extract. Install Simple HTTP Server here: https://play.google.com/store/apps/details?id=com.phlox.simpleserver&hl=en_US&gl=US
+Version 1.8.0 of Simple HTTP Server is preferred since it won't automatically stop running. The developer apparently put continuous running behind a paywall in newer versions. ಠ_ಠ
 
 Open Simple HTTP Server, set the root folder to the 'bible' directory, and start the server.
 
