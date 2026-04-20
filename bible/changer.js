@@ -1,4 +1,4 @@
-//JS-Local Bible © 2009-2024 Adam L. Humphreys (ALH)
+//JS-Local Bible © 2009-2026 Adam L. Humphreys (ALH)
 
 document.addEventListener('DOMContentLoaded', function()
 {
