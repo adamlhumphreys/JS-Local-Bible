@@ -6,6 +6,42 @@ document.addEventListener('DOMContentLoaded', function()
 	_GET = [];
 	window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(a,name,value){_GET[name]=value.replace(/#.*$/, '');});
 
+	// Have #pageTitle link use history.pushState.
+	document.getElementById('pageTitle').addEventListener('click', function(e)
+	{
+		if (e.target.tagName === 'A')
+		{
+			e.preventDefault();
+			let loc = (currentBook+1) + ':' + (currentChapter+1);
+			history.pushState({ver: version, loc: loc}, '', '?ver=' + version + '&loc=' + loc);
+		}
+	});
+
+	// Also handle search via pushState instead of form submission.
+	document.querySelector('#navigation form').addEventListener('submit', function(e)
+	{
+		e.preventDefault();
+		let searchVal = document.getElementById('searchField').value.trim();
+		if (searchVal)
+		{
+			searchVal = searchVal.replace(/ /g, '+');
+			find(searchVal);
+			history.pushState({ver: version, s: searchVal}, '', '?ver=' + version + '&s=' + searchVal);
+		}
+	});
+
+	// Use popstate handler so the back/forward buttons work correctly with pushState.
+	window.addEventListener('popstate', function(e)
+	{
+		if (e.state)
+		{
+			if (e.state.loc !== undefined)
+				loadPage(e.state.loc);
+			else if (e.state.s !== undefined)
+				find(e.state.s);
+		}
+	});
+
 	loadVersion(_GET['ver']);
 });
 
@@ -70,18 +106,7 @@ function setup(ver)
 		if (_GET['s'] !== undefined)
 			find(decodeURI(_GET['s']).replace(/^[\+\s]+|[\+\s]+$/gm,'')); // Support Unicode and trim whitespace.
 		else if (_GET['loc'] !== undefined)
-		{
-			var vars = _GET['loc'].split(':');
-
-			changeBook(vars[0]);
-			if (vars[2]) //Must come before the chapter contents is written.
-				currentVerse = vars[2]-1;
-
-			if (vars[1])
-				changeChapter(vars[1]);
-			else
-				changeChapter(1);
-		}
+			loadPage(_GET['loc']);
 		else
 			changeChapter('first');
 	}
@@ -90,6 +115,23 @@ function setup(ver)
 
 	showHideButtons();
 	makeChapterTabs();
+
+	if (newPageLoad && _GET['s'] === undefined)
+		history.replaceState({ver: version, loc: (currentBook+1) + ':' + (currentChapter+1)}, '');
+}
+
+function loadPage(loc)
+{
+	var vars = loc.split(':');
+
+	changeBook(vars[0]);
+	if (vars[2]) //Must come before the chapter contents is written.
+		currentVerse = vars[2]-1;
+
+	if (vars[1])
+		changeChapter(vars[1]);
+	else
+		changeChapter(1);
 }
 
 function toggleClassByClass(commonStyleVal, toggleStyleVal, showHide)
